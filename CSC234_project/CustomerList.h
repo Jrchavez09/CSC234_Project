@@ -1,5 +1,5 @@
-#ifndef CustomerList_H
-#define CustomerList_H
+#ifndef CUSTOMERLIST_H_INCLUDED
+#define CUSTOMERLIST_H_INCLUDED
 
 #include <iostream>
 #include <string>
@@ -13,59 +13,17 @@ using namespace std;
 
 class CustomerList : public linkedListType<Customer>
 {
-	friend ostream& operator<<(ostream& os, const CustomerList& customer)
-	{
-		customer.print();
-		return (os);
-	}
-
+	friend ostream& operator<<(ostream& os, const CustomerList& customer);
 	public:
-		void
-		AddCustomer(Customer& customer)
-		{
-			insertLast(customer);
-		}
+		void AddCustomer(Customer& customer);
+		bool searchCustomerByName(string searchName) const;
+		void searchCustomerByNameHelper(string searchName,
+			bool found, nodeType<Customer>* &current) const;
 
+		Customer getCustomerByName(string _name) const;
 
-		bool
-		searchCustomerByName(string searchName) const
-		{
-			bool found = false;
-
-			return (found);
-		}
-
-
-		Customer
-		getCustomerByName(string _name) const
-		{
-			Customer n;
-			return n;
-		}
-
-
-		void
-		UpdateCustomer(Customer& _customer)
-		{
-			return;
-		}
-
-
-		void
-		UpdateDataFile(ofstream& file)
-		{
-			nodeType<Customer> *current = first;
-
-			while (current != nullptr) {
-				file << current->info.getCustomerName() << endl
-					<< current->info.getAddress() << endl
-					<< current->info.getEmail() << endl;
-				current = current->link;
-			}
-
-			return;
-		}
+		void UpdateCustomer(Customer& current);
+		void UpdateDataFile(ofstream& file);
 };
 
-#endif // !CustomerList_H
-
+#endif // !CUSTOMERLIST_H_INCLUDED

@@ -1,5 +1,5 @@
-#ifndef Customer_H
-#define Customer_H
+#ifndef CUSTOMER_H_INCLUDED
+#define CUSTOMER_H_INCLUDED
 
 #include <string>
 #include <cstdbool>
@@ -13,7 +13,7 @@ using std::ostream;
 
 class Customer 
 {
-	friend ostream& operator<<(ostream&,  const Customer);
+	friend ostream& operator<<(ostream&,  const Customer&);
 
 	private:
 		string name;
@@ -22,56 +22,25 @@ class Customer
 		OrderList orders;
 
 	public:
-		Customer() : name(""), address(""), email("") { }
-		
+		Customer();
 		Customer(string _name, string _address,
-					string _email, OrderList _orders) :
-			name(_name),
-			address(_address),
-			email(_email),
-			orders(_orders) { }
+			 string _email, OrderList _orders);
 
-		OrderList getOrders()
-		{
-			return (orders);
-		}
+		OrderList getOrders();
+		void AddOrder(Order arg);
+		void UpdateOrders(string arg, int n);
+		void CancelOrder(string arg, int n);
+		
+		string getCustomerName();
+		string getAddress();
+		string getEmail();
+		double checkoutOrders();
+		
+		bool operator==(const Customer& n) const;
+		bool operator!=(const Customer& n) const;
+		bool checkCustomerName(string _name);
 
-		void AddOrder(Order arg) { return;  }
-		
-		
-		void
-		UpdateOrders(string arg, int n)
-		{
-			return;
-		}
-		
-		
-		void
-		CancelOrder(string arg, int n)
-		{
-			return;
-		}
-
-		string getCustomerName() { return (name); }
-		string getAddress() { return (address); }
-		string getEmail() { return (email); }
-		double checkoutOrders() { return (0.0); }
-		
-		bool
-		operator==(const Customer& n) const
-		{
-			return (name == n.name || address == n.address
-				|| email == n.email);
-		}
-
-
-		bool
-		operator!=(const Customer& n) const
-		{
-			return (name != n.name || address != n.address
-				|| email != n.email);
-		}
 };
 
-#endif // !Customer_H
+#endif // !CUSTOMER_H_INCLUDED
 

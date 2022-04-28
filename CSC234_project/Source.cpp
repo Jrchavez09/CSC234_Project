@@ -1,5 +1,5 @@
 /* *
- * main.cpp
+ * Source.cpp
  */
 #include <iostream>
 #include <cstdlib>
@@ -23,7 +23,7 @@ void UpdateDataFile(CustomerList&);
 
 
 int
-main(void)
+main()
 {
 	cout << "Hello, World!" << endl;
 	exit(EXIT_SUCCESS);
