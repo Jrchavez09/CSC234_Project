@@ -1,6 +1,6 @@
 CC= g++
-# CFLAGS= -Wall -Wextra -Wpedantic -Werror -O3 -pg --save-temps -fPIC
-CFLAGS= -Wall
+CFLAGS= -Wall -Wextra -Wpedantic -Werror -O3 -pg --save-temps -fPIC
+# CFLAGS= -Wall
 
 CFILES = *.cpp
 OBJ= *.o
